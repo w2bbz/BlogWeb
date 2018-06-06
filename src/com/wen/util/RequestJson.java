@@ -6,8 +6,8 @@ import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.RetentionPolicy;
 
-@Target({ElementType.PARAMETER})
-@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD})  
+@Retention(RetentionPolicy.RUNTIME)  
 @Documented
 public @interface RequestJson {
 	

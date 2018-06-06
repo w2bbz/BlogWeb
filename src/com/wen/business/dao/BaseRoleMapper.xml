@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wen.business.dao.BaseRoleMapper" >
+	
+	<select id="selectBaseRolesByParam" parameterType="Map" resultType="java.util.Set">
+      select br.name from baseweb.base_role br
+      left join baseweb.base_role_user bru  on bru.role_id=br.id 
+      left join baseweb.base_user bu on bu.id=bru.id
+      where 1=1 
+      <if test="account !=null">
+      and bu.account=#{account}
+      </if>
+  	</select>
+  	
+</mapper>
