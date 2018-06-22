@@ -1,0 +1,6 @@
+#jdbc
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://blog.l2you.com:3366/blogweb?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+jdbc.username=blog
+jdbc.password=blog2018
+validationQuery=SELECT 1

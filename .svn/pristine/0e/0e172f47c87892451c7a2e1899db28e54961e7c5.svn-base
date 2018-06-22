@@ -1,0 +1,83 @@
+package com.wen.business.model;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "base_role", catalog = "baseweb")
+public class BaseRole implements Serializable{
+	
+	@Id
+	@Column(name="id")
+	@ApiModelProperty(hidden=true)
+	private Long id;
+
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="detail")
+	private String detail;
+	
+	@Column(name="state")
+	@ApiModelProperty(hidden=true)
+	private Integer state;
+	
+	@Column(name="delete_state")
+	@ApiModelProperty(hidden=true)
+	private Integer deleteState;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDeleteState() {
+		return deleteState;
+	}
+
+	public void setDeleteState(Integer deleteState) {
+		this.deleteState = deleteState;
+	}
+	
+	
+	
+	
+}

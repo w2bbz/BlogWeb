@@ -1,0 +1,16 @@
+
+$(function() {
+	showaddress();
+});
+function showaddress(){
+	var url = basePath+'commonService/getRequestIp.do?random='+ Math.random();
+	$.getJSON(url, function(rs) {
+		console.log(rs);
+	    var ip = "获取失败";//获取用户IP
+	    if(rs.status==200){
+	    	ip = rs.data.ip;
+	    }
+	    //alert(ip);
+	    document.getElementById("showaddress").innerText=" IP地址: "+ip+" ";
+	});
+}

@@ -1,0 +1,68 @@
+
+package com.wen.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.wen.business.frame.BaseController;
+import com.wen.business.service.BaiduApiService;
+import com.wen.business.util.NetworkUtil;
+
+@Api(value = "commonController", tags = {"公用接口"})
+@RestController
+@RequestMapping("/commonController")
+public class CommonController extends BaseController{
+	
+	@Autowired
+	private BaiduApiService baiduApiService;
+	
+	
+	@ApiOperation(value = "获取访问IP地址", notes = "", httpMethod = "POST")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "random", value = "随机数", paramType = "query"),
+	})
+	@RequestMapping(value ="/getRequestIp.do")
+	public JSONObject getRequestIp(HttpServletRequest request,String random) throws Exception{
+		
+		String ip=NetworkUtil.getIPAddress(request);
+		
+		JSONObject obj=new JSONObject();
+		
+		obj.put("ip", ip);
+		
+		return obj;
+	}
+	
+	@ApiOperation(value = "百度IP普通定位", notes = "", httpMethod = "POST")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "random", value = "随机数", paramType = "query"),
+	})
+	@RequestMapping(value ="/getRequestBaiduAddress.do")
+	public JSONObject getRequestBaiduAddress(HttpServletRequest request,String random) throws Exception{
+		
+		String ip=NetworkUtil.getIPAddress(request);
+		
+		//JSONObject json=new JSONObject();
+		JSONObject json=baiduApiService.getBaidduAddressByip(ip);
+		
+		json.put("ip", ip);
+		
+		return json;
+	}
+	
+	
+}

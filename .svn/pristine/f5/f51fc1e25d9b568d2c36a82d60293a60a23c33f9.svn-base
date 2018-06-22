@@ -1,0 +1,18 @@
+package com.wen.business.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.wen.business.model.BlogWorkRecord;
+import com.wen.util.EntityMapper;
+
+public interface BlogWorkRecordMapper extends EntityMapper<BlogWorkRecord> {
+
+	/**
+	 * 查找日志列表
+	 * @param map
+	 * @return
+	 */
+	List<BlogWorkRecord> selectBlogWorkRecordByParam(Map<String, Object> map);
+	
+}
